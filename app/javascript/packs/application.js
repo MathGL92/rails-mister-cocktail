@@ -17,3 +17,23 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap';
+
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+
+import { loadDynamicBannerText } from '../components/banner';
+
+import { initSelect2 } from '../components/init_select2';
+
+import AOS from 'aos';
+
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  initUpdateNavbarOnScroll();
+  loadDynamicBannerText();
+  initSelect2();
+  AOS.init();
+});
+
+
+

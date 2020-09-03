@@ -8,17 +8,19 @@
   <div class="container">
 
     <div class="row d-flex justify-content-center">
-      <div class="col-12 col-md-6">
 
-        <h2 class="my-3">Recipe</h2>
-        <div class="ingredients-recipe">
-          <% @cocktail.doses.each do |dose| %>
-            <div><%= icon('fas', 'cocktail')%>  <%= dose.description %> of <%= dose.ingredient.name %>
-              <span class="ml-2 small">
-                <%= link_to icon('fas', 'trash-alt'), dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
-              </span>
-            </div>
-          <% end %>
+      <div class="margin-top-negative col-12 col-md-6">
+        <div class="card-recipe">
+          <h2 class="my-3">Recipe</h2>
+          <div class="ingredients-recipe">
+            <% @cocktail.doses.each do |dose| %>
+              <div><%= icon('fas', 'cocktail')%>  <%= dose.description %> of <%= dose.ingredient.name %>
+                <span class="ml-2 small">
+                  <%= link_to icon('fas', 'trash-alt'), dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
+                </span>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 
@@ -32,14 +34,9 @@
     <div class="row my-2">
       <div class="col-12">
         <h4 class="my-3 d-inline-block mr-2">Reviews</h4>
-        <span><%= icon('fas', 'star')%></span>
-        <span><%= icon('fas', 'star')%></span>
-        <span><%= icon('fas', 'star')%></span>
-        <span><%= icon('fas', 'star')%></span>
-        <span><%= icon('fas', 'star')%></span>
           <% @cocktail.reviews.each do |review| %>
             <div>
-              <p><%= review.rating %> - <%= review.content %> <span class="font-italic"> - <%= review.user %></span></p>
+              <p><span class="stars" ><%= icon('fas', 'star') * review.rating%><%= icon('far', 'star') * (5 - review.rating)%></span> - <%= review.content %> <span class="font-italic"> - <%= review.user %></span></p>
             </div>
           <% end %>
       </div>

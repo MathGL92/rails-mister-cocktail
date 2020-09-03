@@ -22,28 +22,21 @@
             <% end %>
           </div>
         </div>
+        <div class="ingredient-add">
+          <h5 class="my-3 d-inline-block mr-2">Add an ingredient</h5>
+          <span><%= icon('fas', 'cocktail')%></span>
+          <%= render 'doses/form' %>
+        </div>
       </div>
 
       <div class="col-12 col-md-6">
-        <h5 class="my-3 d-inline-block mr-2">Add an ingredient</h5>
-        <span><%= icon('fas', 'cocktail')%></span>
-        <%= render 'doses/form' %>
-      </div>
-    </div>
-
-    <div class="row my-2">
-      <div class="col-12">
         <h4 class="my-3 d-inline-block mr-2">Reviews</h4>
-          <% @cocktail.reviews.each do |review| %>
-            <div>
-              <p><span class="stars" ><%= icon('fas', 'star') * review.rating%><%= icon('far', 'star') * (5 - review.rating)%></span> - <%= review.content %> <span class="font-italic"> - <%= review.user %></span></p>
-            </div>
-          <% end %>
-      </div>
-    </div>
+        <% @cocktail.reviews.each do |review| %>
+          <div>
+            <p><span class="stars" ><%= icon('fas', 'star') * review.rating%><%= icon('far', 'star') * (5 - review.rating)%></span> - <%= review.content %> <span class="font-italic"> - <%= review.user %></span></p>
+          </div>
+        <% end %>
 
-    <div class="row my-2">
-      <div class="col-12">
         <h5 class="my-3">Add a review</h5>
 
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">

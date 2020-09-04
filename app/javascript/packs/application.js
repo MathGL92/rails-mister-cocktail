@@ -20,19 +20,19 @@ import 'bootstrap';
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
-import { loadDynamicBannerText } from '../components/banner';
-
 import { initSelect2 } from '../components/init_select2';
 
 import AOS from 'aos';
+
+import { loadDynamicBannerText } from '../components/banner';
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
-  loadDynamicBannerText();
   initSelect2();
   AOS.init();
+  loadDynamicBannerText();
 });
 
 

@@ -1,16 +1,17 @@
 .home-banner {
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('landing.jpg');
   background-size: cover;
+  background-position: center center;
   height: 100vh;
   color: #eee;
   text-align: center;
   padding-top: 40vh;
 }
 
-
 .new-banner {
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('banner-new.jpg');
   background-size: cover;
+  background-position: center center;
   height: 100vh;
   color: #eee;
   text-align: center;
@@ -21,4 +22,7 @@
   background-size: cover;
   width: 100%;
   height: auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

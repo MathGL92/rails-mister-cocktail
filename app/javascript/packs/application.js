@@ -26,6 +26,7 @@ import { aos } from '../components/aos';
 
 import { loadDynamicBannerText } from '../components/banner';
 
+import { initSweetalert } from '../components/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
@@ -33,6 +34,16 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   aos();
   loadDynamicBannerText();
+  initSweetalert('#sweet-alert-demo', {
+    title: "Are you sure?",
+    text: "This action cannot be reversed",
+    icon: "warning"
+  }, (value) => {
+    if (value) {
+      const link = document.getElementById('delete-link');
+      link.click();
+    }
+});
 });
 
 

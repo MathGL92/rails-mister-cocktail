@@ -14,9 +14,6 @@
     "sweetalert": "^2.1.2",
     "turbolinks": "^5.2.0",
     "typed.js": "^2.0.11"
-    "scripts": {
-      "postinstall": "ng build"
-    }
   },
   "version": "0.1.0",
   "devDependencies": {

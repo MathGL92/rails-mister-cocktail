@@ -22,7 +22,7 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 import { initSelect2 } from '../components/init_select2';
 
-import AOS from 'aos';
+import { aos } from '../components/aos';
 
 import { loadDynamicBannerText } from '../components/banner';
 
@@ -31,7 +31,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
   initSelect2();
-  AOS.init();
+  aos();
   loadDynamicBannerText();
 });
 

@@ -21,8 +21,23 @@ h1, h5 {
 #new_review, #new_dose {
   color: #eee;
   width: 60%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .icon-white {
   color: #eee;
+}
+
+.ingredient-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
 }

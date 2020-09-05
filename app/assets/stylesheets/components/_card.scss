@@ -14,6 +14,11 @@
     font-size: 24px;
     font-weight: bold;
   }
+  .avg-ratings-cocktail {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }
 
 
@@ -21,8 +26,10 @@
   overflow: hidden;
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  padding: 20px 0 50px 50px;
+  padding: 20px;
   width: 80%;
+  margin: 0 auto;
+  border-radius: 5px;
 }
 
 .card-reviews {
@@ -30,5 +37,7 @@
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
+  margin: 0 auto;
+  border-radius: 5px;
 }
 

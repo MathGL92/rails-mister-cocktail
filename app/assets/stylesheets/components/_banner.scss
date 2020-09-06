@@ -21,8 +21,14 @@
 .banner-cocktail {
   background-size: cover;
   width: 100%;
-  height: auto;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100vh;
+}
+
+@media (max-width: 767.98px) {
+  .banner-cocktail {
+    height: auto;
+  }
 }

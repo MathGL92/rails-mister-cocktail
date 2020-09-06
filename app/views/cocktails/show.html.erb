@@ -6,9 +6,9 @@
 
   <div class="container">
 
-    <div class="row d-flex justify-content-center justify-content-md-between">
+    <div class="row d-flex justify-content-center justify-content-lg-between">
 
-      <div class="col-10 col-md-5">
+      <div class="col-10 col-lg-5 mb-5">
         <div class="my-3 card-recipe">
           <h2 class="my-3">Recipe</h2>
           <div class="ingredients-recipe">
@@ -65,7 +65,7 @@
         </div>
       </div>
 
-      <div class="mt-3 col-10 col-md-5">
+      <div class="col-10 col-lg-5">
         <div class="my-3 card-reviews">
           <div class="d-flex align-items-center">
             <h4 class="my-3 d-inline-block mr-2">Reviews</h4>
@@ -126,8 +126,6 @@
 
     </div>
 
-    <%= link_to icon('fas', 'arrow-left'), root_path, class: "mr-3 icon-direction icon-white" %>
-
   </div>
-
 </div>
+<%= link_to icon('fas', 'arrow-left'), root_path, class: "mr-3 icon-direction icon-white", id: "arrow-left" %>

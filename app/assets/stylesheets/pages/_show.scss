@@ -45,3 +45,16 @@ h1, h5 {
     color: #0e0000;
   }
 }
+
+#arrow-left {
+  position: relative;
+  bottom: 95px;
+  left: 10px;
+}
+
+@media (max-width: 767.98px) {
+  #arrow-left {
+    bottom: 50px;
+    left: 10px;
+  }
+}

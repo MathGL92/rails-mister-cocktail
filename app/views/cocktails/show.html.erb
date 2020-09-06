@@ -25,11 +25,43 @@
         </div>
         <hr>
         <div class="ingredient-add">
-          <div class="text-center">
-            <h5 class="my-3 d-inline-block">Add an ingredient</h5>
-            <span class="icon-white"><%= icon('fas', 'cocktail')%></span>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
+            Add an ingredient <span class="icon-white ml-2"><%= icon('fas', 'cocktail')%></span>
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+                <div class="modal-header">
+                  <h5 class="modal-title d-inline-block" id="exampleModalLabel">Add an ingredient</h5>
+                  <span class="ml-2"><%= icon('fas', 'cocktail')%></span>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= f.input :description %>
+                  <%= f.association :ingredient, input_html: { class: 'select2' } %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.button :submit, class: 'btn btn-outline-dark' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
-          <%= render 'doses/form' %>
+
+
+          <!-- <div class="text-center">
+            <h5 class="my-3 d-inline-block">Add an ingredient</h5>
+            <span class="icon-white"><%#= icon('fas', 'cocktail')%></span>
+          </div>
+          <%#= render 'doses/form' %> -->
         </div>
       </div>
 
@@ -55,20 +87,46 @@
 
         <div class="review-add">
 
-          <h5 class="my-3 text-center">Add a review</h5>
+          <!-- <h5 class="my-3 text-center">Add a review</h5> -->
 
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-          Launch static backdrop modal
-        </button> -->
+                    <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#exampleModal">
+            Add a review
+          </button>
 
-          <%= render 'reviews/form' %>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <%= simple_form_for [ @cocktail, @review ] do |f| %>
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add a review</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= f.input :user %>
+                  <%= f.input :content %>
+                  <%= f.input :rating, collection: 0..5 %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.button :submit, class: 'btn btn-outline-dark' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%#= render 'reviews/form' %>
         </div>
 
       </div>
 
     </div>
 
-    <%#= link_to icon('fas', 'arrow-left'), root_path, class: "mr-3 icon-direction" %>
+    <%= link_to icon('fas', 'arrow-left'), root_path, class: "mr-3 icon-direction icon-white" %>
 
   </div>
 

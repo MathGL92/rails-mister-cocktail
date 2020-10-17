@@ -30,10 +30,12 @@
         <hr>
         <div class="ingredient-add">
 
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#ingredients-form">
-            Add an ingredient <span class="icon-white ml-2"><%= icon('fas', 'cocktail')%></span>
-          </button>
+          <% if @cocktail.user == current_user %>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#ingredients-form">
+              Add an ingredient <span class="icon-white ml-2"><%= icon('fas', 'cocktail')%></span>
+            </button>
+          <% end %>
 
           <!-- Modal -->
           <div class="modal fade" id="ingredients-form" tabindex="-1" role="dialog" aria-labelledby="ingredients-form-label" aria-hidden="true">
@@ -84,7 +86,7 @@
           <% else %>
             <% @cocktail.reviews.each do |review| %>
               <div>
-                <p><span class="stars" ><%= icon('fas', 'star') * review.rating%><%= icon('far', 'star') * (5 - review.rating)%></span> - <%= review.content %> <span class="font-italic"> - <%= review.user %></span></p>
+                <p><span class="stars" ><%= icon('fas', 'star') * review.rating%><%= icon('far', 'star') * (5 - review.rating)%></span> - <%= review.content %> <span class="font-italic"> - <%= review.user.username %></span></p>
               </div>
             <% end %>
           <% end %>

@@ -1,7 +1,11 @@
 <div class="home-banner">
   <h1 class="mx-auto mb-5">Cocktail Lover</h1>
   <p>
-    <span id="banner-typed-text"></span>
+    <% if user_signed_in? %>
+      <p class="welcome-message"><em>Welcome back <%= current_user.username %> !</em></p>
+    <% else %>
+      <span id="banner-typed-text" class="welcome-message"></span>
+    <% end %>
   </p>
   <button class="btn btn-lg btn-outline-light my-5 ml-2 d-flex align-items-center mx-auto button-landing">
     <%= link_to "Add your cocktail", new_cocktail_path(@cocktail)%>

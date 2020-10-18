@@ -23,7 +23,7 @@ User.destroy_all
 
 puts "Creating 1 user ..."
 
-admin = User.create!(email: "mathieu.longe@orange.fr", password: "HelloWorld1993!", username: "Mathieu")
+admin = User.create!(email: "admin@admin.com", password: "password", username: "Mathieu")
 
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredient_serialized = open(url).read

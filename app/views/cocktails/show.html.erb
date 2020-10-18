@@ -21,7 +21,9 @@
                 <!-- <span id="sweet-alert-demo" class="ml-2 small"><%#= icon('fas', 'trash-alt') %></span> -->
                 <%#= link_to "", dose_path(dose), method: :delete, id: "delete-link", class: "hidden" %>
                 <span class="ml-2 small">
-                  <%= link_to icon('fas', 'trash-alt'), dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }%>
+                  <% if @cocktail.user == current_user %>
+                    <%= link_to icon('fas', 'trash-alt'), dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }%>
+                  <% end %>
                 </span>
               </div>
             <% end %>
@@ -31,43 +33,9 @@
         <div class="ingredient-add">
 
           <% if @cocktail.user == current_user %>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#ingredients-form">
-              Add an ingredient <span class="icon-white ml-2"><%= icon('fas', 'cocktail')%></span>
-            </button>
+            <%= render 'doses/form' %>
           <% end %>
 
-          <!-- Modal -->
-          <div class="modal fade" id="ingredients-form" tabindex="-1" role="dialog" aria-labelledby="ingredients-form-label" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <%= simple_form_for [ @cocktail, @dose ] do |f| %>
-                <div class="modal-header">
-                  <h5 class="modal-title d-inline-block" id="ingredients-form-label">Add an ingredient</h5>
-                  <span class="ml-2"><%= icon('fas', 'cocktail')%></span>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= f.input :description %>
-                  <%= f.association :ingredient, input_html: { class: 'select2' } %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.button :submit, class: 'btn btn-outline-dark' %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- <div class="text-center">
-            <h5 class="my-3 d-inline-block">Add an ingredient</h5>
-            <span class="icon-white"><%#= icon('fas', 'cocktail')%></span>
-          </div>
-          <%#= render 'doses/form' %> -->
         </div>
       </div>
 
@@ -82,7 +50,7 @@
             </div>
           </div>
           <% if @cocktail.reviews.empty? %>
-            <p>Be the first to let a review</p>
+            <p>Be the first to give a review</p>
           <% else %>
             <% @cocktail.reviews.each do |review| %>
               <div>
@@ -95,38 +63,13 @@
         <hr>
 
         <div class="review-add">
-
-          <!-- <h5 class="my-3 text-center">Add a review</h5> -->
-
-                    <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#reviews-form">
-            Add a review
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="reviews-form" tabindex="-1" role="dialog" aria-labelledby="reviews-form-label" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <%= simple_form_for [ @cocktail, @review ] do |f| %>
-                <div class="modal-header">
-                  <h5 class="modal-title" id="reviews-form-label">Add a review</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= f.input :user %>
-                  <%= f.input :content %>
-                  <%= f.input :rating, collection: 0..5 %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= f.button :submit, class: 'btn btn-outline-dark' %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <% if user_signed_in? %>
+            <% if current_user.can_review?(@cocktail) %>
+              <%= render 'reviews/modal_create' %>
+            <% else %>
+              <%= render 'reviews/modal_edit' %>
+            <% end %>
+          <% end %>
 
           <%#= render 'reviews/form' %>
         </div>

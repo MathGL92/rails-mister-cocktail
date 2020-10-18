@@ -1,0 +1,27 @@
+<!-- Button trigger modal -->
+
+<button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#reviews-form-edit">Update your review</button>
+
+<!-- Modal -->
+<div class="modal fade" id="reviews-form-edit" tabindex="-1" role="dialog" aria-labelledby="reviews-form-edit-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= simple_form_for [ @cocktail, @review ] do |f| %>
+      <div class="modal-header">
+        <h5 class="modal-title" id="reviews-form-edit-label">Update your review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= f.input :content %>
+        <%= f.input :rating, collection: 0..5 %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, value: 'Update Review', class: 'btn btn-outline-dark' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,11 @@ class CocktailsController < ApplicationController
 
   def show
     @dose = Dose.new
-    @review = Review.new
+    if current_user
+      @review = Review.where(user_id: current_user.id).first_or_initialize
+    else
+      @review = Review.new
+    end
   end
 
   def new

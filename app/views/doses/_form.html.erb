@@ -1,5 +1,29 @@
-<%= simple_form_for [ @cocktail, @dose ] do |f| %>
-    <%= f.input :description %>
-    <%= f.association :ingredient, input_html: { class: 'select2' } %>
-    <%= f.button :submit, class: 'btn btn-outline-light' %>
-<% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#ingredients-form">
+  Add an ingredient <span class="icon-white ml-2"><%= icon('fas', 'cocktail')%></span>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ingredients-form" tabindex="-1" role="dialog" aria-labelledby="ingredients-form-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+      <div class="modal-header">
+        <h5 class="modal-title d-inline-block" id="ingredients-form-label">Add an ingredient</h5>
+        <span class="ml-2"><%= icon('fas', 'cocktail')%></span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= f.input :description %>
+        <%= f.association :ingredient, input_html: { class: 'select2' } %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.button :submit, class: 'btn btn-outline-dark' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

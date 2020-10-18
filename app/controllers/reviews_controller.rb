@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:edit, :update]
+
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])
     @review = Review.new(review_params)
@@ -12,7 +14,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review.update(review_params)
+
+    redirect_to cocktail_path(@review.cocktail)
+  end
+
   private
+
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:content, :rating)

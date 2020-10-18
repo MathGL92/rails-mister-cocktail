@@ -93,6 +93,6 @@ Review.create!(content: "Very original cocktail, a bit surprising", rating: 4, u
 Review.create!(content: "Reminds me my trip in South America...", rating: 5, user_id: user1.id, cocktail_id: pisco.id)
 Review.create!(content: "Very nice summer drink, a bit sweet though", rating: 4, user_id: user2.id, cocktail_id: sex_on_the_beach.id)
 Review.create!(content: "Doesn't taste enough olive but ok", rating: 3, user_id: user1.id, cocktail_id: olive_splash.id)
-Review.create!(content: "Good to start party!!", rating: 4, user_id: user1.id, cocktail_id: moscow_mule.id)
+Review.create!(content: "Good to start a party!!", rating: 4, user_id: user1.id, cocktail_id: moscow_mule.id)
 
 puts "Created #{Review.count} reviews"

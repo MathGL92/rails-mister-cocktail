@@ -1,6 +1,3 @@
-<%= render 'shared/navbar' %>
-<!-- <div class="position-relative" style="top: 60px"> -->
-
 <% if @cocktail.photo.attached? %>
   <div class="banner-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo.key, width: :auto, crop: :fill %>')">
 <% else %>
@@ -50,7 +47,11 @@
             </div>
           </div>
           <% if @cocktail.reviews.empty? %>
-            <p>Be the first to give a review</p>
+            <% if @cocktail.user == current_user %>
+              <p>Your cocktail doesn't have any review yet</p>
+            <% else %>
+              <p>Be the first to give a review</p>
+            <% end %>
           <% else %>
             <% @cocktail.reviews.each do |review| %>
               <div>
@@ -63,7 +64,7 @@
         <hr>
 
         <div class="review-add">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && @cocktail.user != current_user %>
             <% if current_user.can_review?(@cocktail) %>
               <%= render 'reviews/modal_create' %>
             <% else %>

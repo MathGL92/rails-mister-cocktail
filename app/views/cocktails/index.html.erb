@@ -1,5 +1,5 @@
 <div class="home-banner">
-  <h1 class="mx-auto mb-5">Cocktail Lover</h1>
+  <h1 class="mx-auto mb-5" id="main-title">Cocktail Lover</h1>
   <p>
     <% if user_signed_in? %>
       <p class="welcome-message"><em>Welcome back <%= current_user.username %> !</em></p>
@@ -44,7 +44,7 @@
             </div>
 
             <div>
-              <%= link_to cocktail.name, cocktail_path(cocktail) %>
+              <%= link_to cocktail.name, cocktail_path(cocktail), class: "cocktail-title" %>
             </div>
           </div>
         </div>

@@ -2,10 +2,28 @@
   justify-content: space-between;
   background-color: transparent;
   transition: 0.5s background-color ease;
+  height: 70px;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+}
+
+.navbar-brand > img {
+  height: 55px;
+  background-color: white;
+  border-radius: 50%;
+  &:hover {
+    height: 58px;
+  }
+}
+
+.logo-text {
+  font-family: 'Dancing Script', 'Roboto';
+  font-size: 1.3rem;
+  a {
+    color: black;
+  }
 }
 
 .navbar-lewagon-white {

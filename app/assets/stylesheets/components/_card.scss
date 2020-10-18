@@ -1,4 +1,5 @@
 .card-category {
+  font-family: 'Dancing Script', 'Roboto';
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -10,9 +11,18 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 10px;
   a {
+    transition: all 0.5s ease-out;
+    display: block;
     color: white;
     font-size: 24px;
     font-weight: bold;
+    &:hover {
+      text-decoration: none;
+      transform: translate(0, -5px);
+    }
+  }
+  .cocktail-title {
+    font-size: 1.5rem;
   }
   .avg-ratings-cocktail {
     position: absolute;

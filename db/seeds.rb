@@ -89,7 +89,7 @@ puts "Creating reviews ..."
 Review.create!(content: "Love this one!!!", rating: 5, user_id: user1.id, cocktail_id: negroni.id)
 Review.create!(content: "Good but a bit strong for me", rating: 3, user_id: user2.id, cocktail_id: negroni.id)
 Review.create!(content: "My favorite!!", rating: 3, user_id: user2.id, cocktail_id: cosmopolitan.id)
-Review.create!(content: "Very original cocktail, a but surprising", rating: 4, user_id: user1.id, cocktail_id: mushroom_cocktail.id)
+Review.create!(content: "Very original cocktail, a bit surprising", rating: 4, user_id: user1.id, cocktail_id: mushroom_cocktail.id)
 Review.create!(content: "Reminds me my trip in South America...", rating: 5, user_id: user1.id, cocktail_id: pisco.id)
 Review.create!(content: "Very nice summer drink, a bit sweet though", rating: 4, user_id: user2.id, cocktail_id: sex_on_the_beach.id)
 Review.create!(content: "Doesn't taste enough olive but ok", rating: 3, user_id: user1.id, cocktail_id: olive_splash.id)

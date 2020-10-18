@@ -1,19 +1,34 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top d-flex align-items-center">
-  <span class="logo-text"><%= link_to image_tag("logo.png"), root_path, class: "navbar-brand" %><%= link_to "Cocktail Lover", root_path %></span>
+  <div class="logo-text"><%= link_to image_tag("logo.png"), root_path, class: "navbar-brand" %><span id="text-logo">Cocktail Lover</div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="search-form-control form-group form-inline">
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Mojito..." %>
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line" style="margin-bottom: 0;"></span>
   </button>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search" aria-label="Search" value="<%= params[:query] %>">
-          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </li>
+      <!-- <li class="nav-item active">
+        <%#= simple_form_for :search, url: root_path, method: :get do |f| %>
+          <div class="search-form-control form-group form-inline">
+            <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "Mojito..." %>
+            <button name="button" type="submit" class="btn btn-flat">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        <%# end %>
+      </li> -->
 
       <%  if user_signed_in? %>
         <li class="nav-item">

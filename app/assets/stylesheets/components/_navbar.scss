@@ -32,7 +32,10 @@
 
 .navbar-nav {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  .dropdown-menu {
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 .navbar-toggler{

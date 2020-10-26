@@ -62,3 +62,13 @@ h1, h5 {
 .select2-container {
   width: 200px;
 }
+
+.favorite-icon {
+  margin-left: 1rem;
+  color: rgba(243,85,76,0.8);
+  font-size: 2rem;
+  &:hover {
+    color: rgba(243,85,76,1);
+    font-size: 2.1rem;
+  }
+}

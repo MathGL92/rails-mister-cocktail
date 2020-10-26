@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_cocktail, only: [:show]
+  before_action :set_cocktail, only: [:show, :favorite]
 
   def index
     if params[:query].present?
@@ -32,6 +32,22 @@ class CocktailsController < ApplicationController
     else
       raise
       render :new
+    end
+  end
+
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @cocktail
+      redirect_back fallback_location: root_path, notice: "You favorited #{@cocktail.name}"
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@cocktail)
+      redirect_back fallback_location: root_path, notice: "You unfavorited #{@cocktail.name}"
+
+    else
+      # Type missing, nothing happens
+      redirect_back fallback_location: root_path, notice: 'Nothing happened.'
     end
   end
 

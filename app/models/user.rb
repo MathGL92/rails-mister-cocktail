@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true, uniqueness: true
 
-  has_many :reviews
-  has_many :cocktails
+  has_many :cocktails, dependent: :destroy
+  has_many :reviews, through: :cocktails
+
 
   def can_review?(cocktail)
     cocktail.reviews.none? { |review| review.user_id == self.id }

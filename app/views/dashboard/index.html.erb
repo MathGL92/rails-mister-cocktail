@@ -42,8 +42,40 @@
 
         <div class="my-3 cocktails-dashboard">
           <h2 class="my-3 text-center">My favorites</h2>
-          <%# @user.favorites.each do |cocktail| %>
-          <%# end %>
+          <% @user.favorites.each do |favorite| %>
+            <div class="cocktail-dashboard-card">
+                <%= cl_image_tag favorite.photo.key %>
+                <div class="infos">
+                  <h5>
+                    <%= favorite.name %>
+                    <span class="edit-button"><%= link_to icon('fas', 'cocktail'), cocktail_path(favorite) %></span>
+                    <span>
+                      <% if user_signed_in? %>
+                        <% if favorite.favorited_by.include?(current_user) %>
+                          <%= link_to icon('fas', 'heart'), favorite_cocktail_path(favorite, type: "unfavorite"), class: "favorite-icon-dashboard", method: :put %>
+                        <% else %>
+                          <%= link_to icon('far', 'heart'),   favorite_cocktail_path(favorite, type: "favorite"),class: "favorite-icon-dashboard", method: :put %>
+                        <% end %>
+                      <% end %>
+  </span>
+                  </h5>
+                  <p>
+                    <% if favorite.reviews.any? %>
+                      <span class='black-text'>
+                        <%= favorite.reviews.count %>
+                      </span>
+                      <strong>Review(s)</strong>
+                      <span class="avg-ratings-cocktail stars">
+                        <%= icon('fas', 'star') * favorite.reviews.average(:rating).to_i %><%= icon('far', 'star') * (5 - favorite.reviews.average(:rating).to_i) %>
+                      </span>
+                    <% else %>
+                      <p><strong>No review yet</strong></p>
+                    <% end %>
+                  </p>
+
+                </div>
+              </div>
+          <% end %>
         </div>
 
       </div>

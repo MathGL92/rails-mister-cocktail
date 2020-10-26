@@ -3,7 +3,17 @@
 <% else %>
   <div class="banner-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1559443922-3f698a0ff27a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=669&q=80')">
 <% end %>
-  <h1 class="text-center dancing-font padding-above-navbar"><%= @cocktail.name %></h1>
+  <h1 class="text-center dancing-font padding-above-navbar"><%= @cocktail.name %>
+  <span>
+    <% if user_signed_in? %>
+      <% if @cocktail.favorited_by.include?(current_user) %>
+        <%= link_to icon('fas', 'heart'), favorite_cocktail_path(@cocktail, type: "unfavorite"), class: "favorite-icon", method: :put %>
+      <% else %>
+        <%= link_to icon('far', 'heart'),   favorite_cocktail_path(@cocktail, type: "favorite"),class: "favorite-icon", method: :put %>
+      <% end %>
+    <% end %>
+  </span>
+  </h1>
 
   <div class="container">
 

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :cocktails, dependent: :destroy
   has_many :reviews, through: :cocktails
+  has_many :favorite_cocktails
+  has_many :favorites, through: :favorite_cocktails, source: :cocktail
 
 
   def can_review?(cocktail)

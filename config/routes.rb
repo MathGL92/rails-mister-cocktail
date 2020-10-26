@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :doses, only: [:create]
     resources :reviews, only: [:create, :edit, :update]
   end
+
+  resources :cocktails do
+    put :favorite, on: :member
+  end
+
   resources :doses, only: [:destroy]
 
   resources :users, only: [:show] do

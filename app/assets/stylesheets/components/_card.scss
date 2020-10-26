@@ -49,3 +49,46 @@
   border-radius: 5px;
 }
 
+.cocktails-dashboard {
+  overflow: scroll;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  padding: 1rem;
+  margin: 0 auto;
+  border-radius: 5px;
+  h2 {
+    font-family: 'Dancing Script', 'Roboto';
+  }
+  .cocktail-dashboard-card {
+    border-radius: 5px;
+    overflow: hidden;
+    height: 120px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    img {
+      height: 100%;
+      width: 120px;
+      object-fit: cover;
+    }
+    h5 {
+      font-family: 'Dancing Script', 'Roboto';
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      color: $gray;
+    }
+    p {
+      font-size: 12px;
+      line-height: 1.4;
+      opacity: .7;
+      margin-bottom: 0;
+      margin-top: 8px;
+    }
+    .infos {
+      padding: 16px;
+    }
+  }
+}

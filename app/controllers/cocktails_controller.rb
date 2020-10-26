@@ -40,11 +40,9 @@ class CocktailsController < ApplicationController
     if type == "favorite"
       current_user.favorites << @cocktail
       redirect_back fallback_location: root_path, notice: "You favorited #{@cocktail.name}"
-
     elsif type == "unfavorite"
       current_user.favorites.delete(@cocktail)
       redirect_back fallback_location: root_path, notice: "You unfavorited #{@cocktail.name}"
-
     else
       # Type missing, nothing happens
       redirect_back fallback_location: root_path, notice: 'Nothing happened.'

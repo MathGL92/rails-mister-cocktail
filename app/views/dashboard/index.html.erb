@@ -3,19 +3,19 @@
   <div class="container">
     <div class="row d-flex justify-content-center justify-content-lg-between">
 
-      <div class="col-10 col-lg-5 mb-5">
+      <div class="col-11 col-lg-5 mb-5">
 
         <div class="my-3 cocktails-dashboard">
           <h2 class="my-3 text-center">My cocktails</h2>
           <% @user.cocktails.each do |cocktail| %>
 
-              <div class="cocktail-dashboard-card">
+              <div class="cocktail-dashboard-card" data-aos="zoom-out">
                 <%= cl_image_tag cocktail.photo.key %>
                 <div class="infos">
                   <h5>
                     <%= cocktail.name %>
                     <span class="edit-button"><%= link_to icon('fas', 'pencil-alt'), cocktail_path(cocktail) %></span>
-                    <span class="edit-button"><%= link_to icon('fas', 'cocktail'), cocktail_path(cocktail) %></span>
+                    <span class="cocktail-link-button"><%= link_to icon('fas', 'cocktail'), cocktail_path(cocktail) %></span>
                   </h5>
                   <p>
                     <% if cocktail.reviews.any? %>
@@ -23,8 +23,10 @@
                         <%= cocktail.reviews.count %>
                       </span>
                       <strong>Review(s)</strong>
+                      / <em>AVG</em>
                       <span class="avg-ratings-cocktail stars">
-                        <%= icon('fas', 'star') * cocktail.reviews.average(:rating).to_i %><%= icon('far', 'star') * (5 - cocktail.reviews.average(:rating).to_i) %>
+                        <%= cocktail.reviews.average(:rating) %>
+                        <%= icon('fas', 'star') %>
                       </span>
                     <% else %>
                       <p><strong>No review yet</strong></p>
@@ -38,17 +40,17 @@
 
       </div>
 
-      <div class="col-10 col-lg-5 mb-5">
+      <div class="col-11 col-lg-5 mb-5">
 
         <div class="my-3 cocktails-dashboard">
           <h2 class="my-3 text-center">My favorites</h2>
           <% @user.favorites.each do |favorite| %>
-            <div class="cocktail-dashboard-card">
+            <div class="cocktail-dashboard-card" data-aos="zoom-in">
                 <%= cl_image_tag favorite.photo.key %>
                 <div class="infos">
                   <h5>
                     <%= favorite.name %>
-                    <span class="edit-button"><%= link_to icon('fas', 'cocktail'), cocktail_path(favorite) %></span>
+                    <span class="cocktail-link-button"><%= link_to icon('fas', 'cocktail'), cocktail_path(favorite) %></span>
                     <span>
                       <% if user_signed_in? %>
                         <% if favorite.favorited_by.include?(current_user) %>
@@ -57,7 +59,7 @@
                           <%= link_to icon('far', 'heart'),   favorite_cocktail_path(favorite, type: "favorite"),class: "favorite-icon-dashboard", method: :put %>
                         <% end %>
                       <% end %>
-  </span>
+                    </span>
                   </h5>
                   <p>
                     <% if favorite.reviews.any? %>

@@ -44,6 +44,14 @@
             </div>
 
             <div>
+              <% if cocktail.favorited_by.include?(current_user) %>
+                <%= link_to icon('fas', 'heart'), favorite_cocktail_path(cocktail, type: "unfavorite"), class: "favorite-icon-index", method: :put %>
+              <% else %>
+                <%= link_to icon('far', 'heart'), favorite_cocktail_path(cocktail, type: "favorite"), class: "favorite-icon-index", method: :put %>
+              <% end %>
+            </div>
+
+            <div>
               <%= link_to cocktail.name, cocktail_path(cocktail), class: "cocktail-title" %>
             </div>
           </div>

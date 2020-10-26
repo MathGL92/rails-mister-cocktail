@@ -44,12 +44,10 @@
             </div>
 
             <div>
-              <% if user_signed_in? %>
-                <% if cocktail.favorited_by.include?(current_user) %>
-                  <%= link_to icon('fas', 'heart'), favorite_cocktail_path(cocktail, type: "unfavorite"), class: "favorite-icon-index", method: :put %>
-                <% else %>
-                  <%= link_to icon('far', 'heart'), favorite_cocktail_path(cocktail, type: "favorite"), class: "favorite-icon-index", method: :put %>
-                <% end %>
+              <% if cocktail.favorited_by.include?(current_user) %>
+                <%= link_to icon('fas', 'heart'), favorite_cocktail_path(cocktail, type: "unfavorite"), class: "favorite-icon-index", method: :put %>
+              <% else %>
+                <%= link_to icon('far', 'heart'), favorite_cocktail_path(cocktail, type: "favorite"), class: "favorite-icon-index", method: :put %>
               <% end %>
             </div>
 

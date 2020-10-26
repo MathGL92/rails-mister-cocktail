@@ -1,4 +1,4 @@
-.edit-button {
+.cocktail-link-button {
   margin-left: 5px;
   a {
     font-size: 0.8rem;
@@ -20,5 +20,20 @@
   &:hover {
     color: rgba(243,85,76,1);
     font-size: 1.1rem;
+  }
+}
+
+.edit-button {
+  position: absolute;
+  top: 17px;
+  right: 16px;
+  margin-left: 5px;
+  a {
+    font-size: 0.8rem;
+    color: $gray;
+    &:hover {
+      font-size: 1rem;
+      color: black;
+    }
   }
 }

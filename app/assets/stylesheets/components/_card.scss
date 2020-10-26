@@ -10,7 +10,20 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 10px;
-  a {
+  .favorite-icon-index {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin-left: 1rem;
+    color: rgba(243,85,76,0.8);
+    font-size: 1.3rem;
+    &:hover {
+      color: rgba(243,85,76,1);
+      font-size: 1.4rem;
+    }
+  }
+  .cocktail-title {
+    font-size: 1.5rem;
     transition: all 0.5s ease-out;
     display: block;
     color: white;
@@ -21,13 +34,10 @@
       transform: translate(0, -5px);
     }
   }
-  .cocktail-title {
-    font-size: 1.5rem;
-  }
   .avg-ratings-cocktail {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    left: 15px;
   }
 }
 

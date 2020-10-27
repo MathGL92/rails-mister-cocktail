@@ -1,5 +1,6 @@
 # Cocktail Lover
 Cocktail Lover is a **Ruby in Rails** web application that enables all cocktail lovers to share their best recipes and try new ones. On Cocktail Lover you can store your recipes, give reviews and save your favorite recipes.
+
 Project homepage: https://cocktail-lover.herokuapp.com/
 
 ## Features

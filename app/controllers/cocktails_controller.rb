@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CocktailsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_cocktail, only: [:show, :favorite]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_cocktail, only: %i[show favorite]
 
   def index
     if params[:query].present?
@@ -13,11 +15,11 @@ class CocktailsController < ApplicationController
 
   def show
     @dose = Dose.new
-    if current_user
-      @review = Review.where(user_id: current_user.id).first_or_initialize
-    else
-      @review = Review.new
-    end
+    @review = if current_user
+                Review.where(user_id: current_user.id).first_or_initialize
+              else
+                Review.new
+              end
   end
 
   def new
@@ -37,10 +39,11 @@ class CocktailsController < ApplicationController
 
   def favorite
     type = params[:type]
-    if type == "favorite"
+    case type
+    when 'favorite'
       current_user.favorites << @cocktail
       redirect_back fallback_location: root_path, notice: "You favorited #{@cocktail.name}"
-    elsif type == "unfavorite"
+    when 'unfavorite'
       current_user.favorites.delete(@cocktail)
       redirect_back fallback_location: root_path, notice: "You unfavorited #{@cocktail.name}"
     else

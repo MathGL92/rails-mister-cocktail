@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,8 +12,7 @@ class User < ApplicationRecord
   has_many :favorite_cocktails
   has_many :favorites, through: :favorite_cocktails, source: :cocktail
 
-
   def can_review?(cocktail)
-    cocktail.reviews.none? { |review| review.user_id == self.id }
+    cocktail.reviews.none? { |review| review.user_id == id }
   end
 end

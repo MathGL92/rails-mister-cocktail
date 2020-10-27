@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :update]
+  before_action :set_review, only: %i[edit update]
 
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])

@@ -30,7 +30,7 @@ INGREDIENTS = ingredient['drinks']
 puts 'Creating ingredients ...'
 
 INGREDIENTS.each do |ingredient|
-  Ingredient.create(name: '#{ingredient['strIngredient1']}')
+  Ingredient.create(name: "#{ingredient['strIngredient1']}")
 end
 
 Ingredient.create!(name: 'Campari')
